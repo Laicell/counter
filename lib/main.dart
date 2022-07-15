@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
               children: [
                 Text(
                   "Press '-' to decrement",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
                 CounterWidget(),
                 Text(
                   "Press '+' to increment",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ],
             ),
@@ -52,33 +52,45 @@ class _CounterWidgetState extends State<CounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              _count -= 1;
-            });
-          },
-          icon: Text(
-            "-",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return Container(
+      width: 161,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 5
+      ),
+      decoration:BoxDecoration(
+          color:Colors.indigoAccent,
+          borderRadius: BorderRadius.circular(10),
+          border:Border.all(
+            width:1,
+            color:Colors.black,
+          )
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _count -= 1;
+              });
+            },
+            icon: Icon(Icons.remove)
           ),
-        ),
-        Text(
-          '$_count',
-          style: TextStyle(fontSize: 20),
-        ),
-        IconButton(
-          onPressed: () {
-            setState(() {
-              _count += 1;
-            });
-          },
-          icon: Icon(Icons.add),
-        ),
-      ],
+          Text(
+            '$_count',
+            style: TextStyle(fontSize: 20),
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _count += 1;
+              });
+            },
+            icon: Icon(Icons.add),
+          ),
+        ],
+      ),
     );
   }
 }
